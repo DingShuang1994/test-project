@@ -7,4 +7,9 @@ public class GetTest {
         System.out.println("发送到本地仓库 点击 vcs import into version control-->create git repository" +
                 "选 ideal project  ");
     }
+
+
+    public static void get(){
+        System.out.println("大锤");
+    }
 }

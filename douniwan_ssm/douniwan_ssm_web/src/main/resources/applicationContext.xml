@@ -31,25 +31,27 @@
 	<!-- 把交给IOC管理 SqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
    		<property name="dataSource" ref="dataSource" />
-   		<!-- 传入PageHelper的插件 -->
-   		<!--<property name="plugins">-->
-   			<!--<array>-->
-   				<!--&lt;!&ndash; 传入插件的对象 &ndash;&gt;-->
-   				<!--<bean class="com.github.pagehelper.PageInterceptor">-->
-   					<!--<property name="properties">-->
-   						<!--<props>-->
-   							<!--<prop key="helperDialect">mysql</prop>-->
-   							<!--<prop key="reasonable">true</prop>-->
-   						<!--</props>-->
-   					<!--</property>-->
-   				<!--</bean>-->
-   			<!--</array>-->
-   		<!--</property>-->
+   		 <!--传入PageHelper的插件 mybatis的分页插件 在spring配置文件中配置方式-->
+   		<property name="plugins">
+   			<array>
+   				<!-- 传入插件的对象 -->
+   				<bean class="com.github.pagehelper.PageInterceptor">
+   					<property name="properties">
+   						<props>
+							<!--智能扫描数据库连接-->
+   							<prop key="helperDialect">oracle</prop>
+							<!--智能检测页码是否大于最大或小于0 智能显示首尾页-->
+   							<prop key="reasonable">true</prop>
+   						</props>
+   					</property>
+   				</bean>
+   			</array>
+   		</property>
    	</bean>
 	
 	<!-- 扫描dao接口 -->
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-   		<property name="basePackage" value="com.itheima.ssm.dao"/>
+   		<property name="basePackage" value="com.douniwan.dao"/>
    	</bean>
 	
 	<!-- 配置Spring的声明式事务管理 -->
@@ -57,7 +59,7 @@
    	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
    		<property name="dataSource" ref="dataSource"/>
    	</bean>
-    <!--不用配置通知 和切面及 通知属性-->
+    <!--不用配置通知 和切面及 通知属性 用的注解把-->
   <tx:annotation-driven transaction-manager="transactionManager"/>
 	
 </beans>

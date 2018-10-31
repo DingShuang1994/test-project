@@ -27,10 +27,10 @@
 	</bean>
 
 	<!-- 设置静态资源不过滤 -->
-	<!--<mvc:resources location="/css/" mapping="/css/**" />-->
-	<!--<mvc:resources location="/img/" mapping="/img/**" />-->
-	<!--<mvc:resources location="/js/" mapping="/js/*,*" />-->
-	<!--<mvc:resources location="/plugins/" mapping="/plugins/**" />-->
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/img/" mapping="/img/**" />
+	<mvc:resources location="/js/" mapping="/js/*,*" />
+	<mvc:resources location="/plugins/" mapping="/plugins/**" />
 
 	<!-- 开启对SpringMVC注解的支持 适配器 映射器 -->
 	<mvc:annotation-driven />

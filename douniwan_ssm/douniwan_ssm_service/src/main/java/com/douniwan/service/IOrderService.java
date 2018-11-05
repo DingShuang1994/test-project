@@ -20,4 +20,6 @@ public interface IOrderService {
 //     * @throws Exception
 //     */
 //    void save(Order order) throws Exception;
+
+    Order findById(String id) throws Exception;
 }
